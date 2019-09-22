@@ -10,9 +10,9 @@ import id.ac.polinema.intent.model.User;
 public class ProfileParcelableActivity extends AppCompatActivity {
 
 
-    private TextView output_username;
-    private TextView output_name;
-    private TextView output_age;
+    private TextView username_text;
+    private TextView name_text;
+    private TextView age_text;
     User user = new User();
 
     @Override
@@ -21,17 +21,17 @@ public class ProfileParcelableActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_parcelable);
 
         // TODO: bind here
-        output_username = findViewById(R.id.text_username);
-        output_name = findViewById(R.id.text_name);
-        output_age = findViewById(R.id.text_age);
+        username_text = findViewById(R.id.text_username);
+        name_text = findViewById(R.id.text_name);
+        age_text = findViewById(R.id.text_age);
 
         user = getIntent().getParcelableExtra("user");
         if (user!= null) {
 
 
-            output_username.setText(user.getUsername());
-            output_age.setText(user.getAge());
-            output_name.setText(user.getName());
+            username_text.setText(user.getUsername());
+            name_text.setText(user.getName());
+            age_text.setText(user.getAge());
 
             // TODO: display value here
 

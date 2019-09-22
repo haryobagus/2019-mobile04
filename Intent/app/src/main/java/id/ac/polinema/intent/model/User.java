@@ -5,24 +5,24 @@ import android.os.Parcelable;
 
 public class User implements Parcelable {
 
+    private String username;
     private String name;
     private String age;
-    private String username;
 
     public User() {
 
     }
 
-    public User(String name, String age, String username) {
+    public User(String username, String name, String age) {
+        this.username = username;
         this.name = name;
         this.age = age;
-        this.username = username;
     }
 
     protected User(Parcel in) {
+        username = in.readString();
         name = in.readString();
         age = in.readString();
-        username = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -37,7 +37,18 @@ public class User implements Parcelable {
         }
     };
 
+    public String getUsername() {
+
+        return username;
+    }
+
+    public void setUsername(String username) {
+
+        this.username = username;
+    }
+
     public String getName() {
+
         return name;
     }
 
@@ -46,19 +57,13 @@ public class User implements Parcelable {
     }
 
     public String getAge() {
+
         return age;
     }
 
     public void setAge(String age) {
+
         this.age = age;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     @Override
@@ -68,8 +73,8 @@ public class User implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(username);
         parcel.writeString(name);
         parcel.writeString(age);
-        parcel.writeString(username);
     }
 }
